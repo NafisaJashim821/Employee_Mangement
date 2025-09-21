@@ -1,0 +1,26 @@
+<h3>Search Employees by Date</h3>
+
+<form (ngSubmit)="onSearch()">
+  <div>
+    <label>Start Date & Time:</label>
+    <input type="datetime-local" [(ngModel)]="startDate" name="startDate">
+  </div>
+
+  <div>
+    <label>End Date & Time:</label>
+    <input type="datetime-local" [(ngModel)]="endDate" name="endDate">
+  </div>
+
+  <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<div *ngIf="employees.length > 0">
+  <h4>Search Results:</h4>
+  <ul>
+    <li *ngFor="let emp of employees">
+      {{ emp.firstName }} {{ emp.lastName }} - Created: {{ emp.createdAt | date:'medium' }} | Updated: {{ emp.updatedAt | date:'medium' }}
+    </li>
+  </ul>
+</div>
